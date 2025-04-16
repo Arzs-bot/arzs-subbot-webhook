@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/internal-instruction.js": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  }
+}
