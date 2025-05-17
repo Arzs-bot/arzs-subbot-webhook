@@ -35,4 +35,3 @@ export default async function handler(req, res) {
     return res.status(500).send("Internal Server Error");
   }
 }
-feat: 加入 GPT 結果寫入 Google Sheets 的功能
