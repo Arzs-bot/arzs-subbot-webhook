@@ -1,0 +1,22 @@
+import { buffer } from 'micro';
+
+export const config = {
+  api: { bodyParser: false }
+};
+
+export default async function handler(req, res) {
+  const rawBody = await buffer(req);
+  const jsonBody = JSON.parse(rawBody.toString());
+
+  const events = jsonBody.events || [];
+
+  for (const event of events) {
+    const source = event.source || {};
+    console.log("📥 收到事件：", JSON.stringify(event, null, 2));
+    console.log("👥 來源 type:", source.type);
+    console.log("👤 userId:", source.userId || "無");
+    console.log("👥 groupId:", source.groupId || "❌ 無 groupId");
+  }
+
+  res.status(200).send("OK");
+}
